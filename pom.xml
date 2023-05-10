@@ -28,7 +28,10 @@
 				    				
 					<cloudHubDeployment>
 						<muleVersion>4.4.0</muleVersion>
-						<server>Repository</server>
+						
+						<connectedAppClientId>${connectedAppClientId}</connectedAppClientId>
+						<connectedAppClientSecret>${connectedAppClientSecret}</connectedAppClientSecret>
+						<connectedAppGrantType>client_credentials</connectedAppGrantType>
 						<applicationName>DevOps-CICD</applicationName>
 						<environment>Development</environment>
 						<workers>1</workers>

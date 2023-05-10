@@ -16,7 +16,7 @@ pipeline {
         CLIENT_SECRET = credentials('connectedAppClientSecret')
       }
          steps {
-            bat 'mvn -U -V -e -B -DskipTests deploy -DmuleDeploy -Danypoint.platform.client_id=%CLIENT_ID% -Danypoint.platform.client_secret=%CLIENT_SECRET%'
+            bat 'clean deploy -DmuleDeploy -Danypoint.platform.client_id=%CLIENT_ID% -Danypoint.platform.client_secret=%CLIENT_SECRET%'
       }
     }
 	     

@@ -2,22 +2,16 @@ pipeline {
   agent any
   
   environment {
-    ANYPOINT_CLIENT_ID = credentials('connectedAppClientId')
-    ANYPOINT_CLIENT_SECRET = credentials('connectedAppClientSecret')
+    CLIENT_ID = credentials('connectedAppClientId')
+    CLIENT_SECRET = credentials('connectedAppClientSecret')
   }
   
   stages {
-    stage('Build') {
+    stage('Build and deploy') {
       steps {
-        bat 'mvn -U -V -e -B -DskipTests package'
-      }
-    }
-    
-    stage('Deploy') {
-      steps {
-        withCredentials([string(credentialsId: 'connectedAppClientId', variable: 'ANYPPOINT_CLIENT_ID'),
-                          string(credentialsId: 'connectedAppClientSecret', variable: 'ANYPPOINT_CLIENT_SECRET')]) {
-          bat 'mvn -U -V -e -B -DskipTests deploy -DmuleDeploy -Danypoint.platform.client_id=${ANYPPOINT_CLIENT_ID} -Danypoint.platform.client_secret=${ANYPPOINT_CLIENT_SECRET}'
+        withCredentials([string(credentialsId: 'connectedAppClientId', variable: 'CLIENT_ID'),
+                         string(credentialsId: 'connectedAppClientSecret', variable: 'CLIENT_SECRET')]) {
+          bat "mvn clean deploy -DmuleDeploy -Danypoint.platform.client_id=${CLIENT_ID} -Danypoint.platform.client_secret=${CLIENT_SECRET}"
         }
       }
     }

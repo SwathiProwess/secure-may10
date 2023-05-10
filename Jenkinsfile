@@ -2,6 +2,7 @@ pipeline {
   agent any
   
   stages {
+    stage('Deployment Development')  
 		CLIENT_ID = credentials('connectedAppClientId')
         CLIENT_SECRET = credentials('connectedAppClientSecret')
     stage('Build and deploy') {

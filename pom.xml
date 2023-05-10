@@ -32,7 +32,7 @@
 						<connectedAppClientId>${connectedAppClientId}</connectedAppClientId>
 						<connectedAppClientSecret>${connectedAppClientSecret}</connectedAppClientSecret>
 						<connectedAppGrantType>client_credentials</connectedAppGrantType>
-						<applicationName>DevOps-CICD</applicationName>
+						<applicationName>DevOps-CICD-may10</applicationName>
 						<environment>Development</environment>
 						<workers>1</workers>
 						<workerType>MICRO</workerType>

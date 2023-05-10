@@ -9,7 +9,7 @@ pipeline {
       }
     }
 
-     stage('Development')      {
+     stage('Deployment Development')      {
          
          environment {
         CLIENT_ID = credentials('connectedAppClientId')

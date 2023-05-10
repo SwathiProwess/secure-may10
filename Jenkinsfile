@@ -17,7 +17,7 @@ pipeline {
       steps {
         withCredentials([string(credentialsId: 'connectedAppClientId', variable: 'ANYPPOINT_CLIENT_ID'),
                           string(credentialsId: 'connectedAppClientSecret', variable: 'ANYPPOINT_CLIENT_SECRET')]) {
-          bat 'mvn -U -V -e -B -DskipTests deploy -PDevelopment -DmuleDeploy -Danypoint.platform.client_id=${ANYPPOINT_CLIENT_ID} -Danypoint.platform.client_secret=${ANYPPOINT_CLIENT_SECRET}'
+          bat 'mvn -U -V -e -B -DskipTests deploy -DmuleDeploy -Danypoint.platform.client_id=${ANYPPOINT_CLIENT_ID} -Danypoint.platform.client_secret=${ANYPPOINT_CLIENT_SECRET}'
         }
       }
     }

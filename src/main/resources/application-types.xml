@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<types:mule xmlns:types="http://www.mulesoft.org/schema/mule/types">
+  <types:catalog>
+    <types:type name="jsonType" format="json">
+      <types:shape format="weave" example="examples/Input-1.json"><![CDATA[%dw 2.0
+
+type jsonType = {|
+  Fname: String, 
+  Lname: String, 
+  Zip: String
+|} {"example": "{\\\"Fname\\\":\\\"Jon\\\",\\\"Lname\\\":\\\"Swats\\\",\\\"Zip\\\":\\\"43535\\\"}"}
+
+]]></types:shape>
+    </types:type>
+    <types:type name="payloadType" format="json">
+      <types:shape format="weave" example="examples/payload.json"><![CDATA[%dw 2.0
+
+type payloadType = {|
+  query: {|
+    codes: Array<String>, 
+    country: String
+  |}, 
+  results: {|
+    "32821": Array<{|      postal_code: String,       country_code: String,       latitude: String,       longitude: String,       city: String,       state: String,       city_en: String,       state_en: String,       state_code: String,       province: String,       province_code: String    |}>
+  |}
+|} {"example": "{\\\"query\\\":{\\\"codes\\\":[\\\"32821\\\"],\\\"country\\\":\\\"US\\\"},\\\"results\\\":{\\\"32821\\\":[{\\\"postal_code\\\":\\\"32821\\\",\\\"country_code\\\":\\\"US\\\",\\\"latitude\\\":\\\"28.39570000\\\",\\\"longitude\\\":\\\"-81.46660000\\\",\\\"city\\\":\\\"Orlando\\\",\\\"state\\\":\\\"Florida\\\",\\\"city_en\\\":\\\"Orlando\\\",\\\"state_en\\\":\\\"Florida\\\",\\\"state_code\\\":\\\"FL\\\",\\\"province\\\":\\\"Orange\\\",\\\"province_code\\\":\\\"095\\\"}]}}"}
+
+]]></types:shape>
+    </types:type>
+  </types:catalog>
+  <types:enrichment select="#d5141261-5c62-4252-ac44-952b05aab9d3">
+    <types:processor-declaration>
+      <types:output-event>
+        <types:variables>
+          <types:variable name="zip" type="jsonType"/>
+        </types:variables>
+      </types:output-event>
+    </types:processor-declaration>
+  </types:enrichment>
+</types:mule>

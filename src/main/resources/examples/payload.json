@@ -1,0 +1,25 @@
+{
+    "query": {
+        "codes": [
+            "32821"
+        ],
+        "country": "US"
+    },
+    "results": {
+        "32821": [
+            {
+                "postal_code": "32821",
+                "country_code": "US",
+                "latitude": "28.39570000",
+                "longitude": "-81.46660000",
+                "city": "Orlando",
+                "state": "Florida",
+                "city_en": "Orlando",
+                "state_en": "Florida",
+                "state_code": "FL",
+                "province": "Orange",
+                "province_code": "095"
+            }
+        ]
+    }
+}

@@ -1,0 +1,21 @@
+#%RAML 1.0
+title: DevOps
+description: API to test DevOps CI/CD Pipelines using GitHub as the repo and Jenkins as the CI/CD controller
+/getCity:
+  get:
+    queryParameters:
+      FirstName:
+        type: string
+        required: true
+      LastName:
+        type: string
+        required: true
+      Zip:
+        type: string
+        required: true
+    responses:
+     200:
+       body:
+            application/json:
+              example:
+                {"message": "John Doe lives in Manchester"}

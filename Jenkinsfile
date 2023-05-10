@@ -3,7 +3,7 @@ pipeline {
   agent any
          
   stages {
-    stage('Test') {
+    stage('Build and Deploy') {
       steps {
           echo  'hello world Munit test case'
       }
@@ -16,7 +16,7 @@ pipeline {
         CLIENT_SECRET = credentials('connectedAppClientSecret')
       }
          steps {
-            bat 'clean deploy -DmuleDeploy -Danypoint.platform.client_id=%CLIENT_ID% -Danypoint.platform.client_secret=%CLIENT_SECRET%'
+            bat 'mvn clean deploy -DmuleDeploy -Danypoint.platform.client_id=%CLIENT_ID% -Danypoint.platform.client_secret=%CLIENT_SECRET%'
       }
     }
 	     
